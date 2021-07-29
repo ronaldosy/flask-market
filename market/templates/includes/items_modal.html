@@ -15,18 +15,13 @@
           <!-- -->
             {{ item.name }}
         </h5>
-        <button type="button" class="close"
-                data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" style="color: white;">x</span>
-        </button>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         {{ item.description }}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-                data-dismiss="modal">Close
-        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -43,10 +38,7 @@
           <!-- -->
             {{ item.name }}
         </h5>
-        <button type="button" class="close"
-                data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" style="color: white;">x</span>
-        </button>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 
@@ -56,13 +48,11 @@
           <br />
           <h6 class="text-center">By clicking purchase, you will purchase this item</h6>
           <br />
-          <input id="purchased_item" name="purchased_item", type="hidden" value="{{ item.name }}">
-          {{ purchase_form.submit(class="btn btn-outline-success btn-block") }}
-        </form>
+          <input id="purchased_item" name="purchased_item", type="hidden" value="{{ item.name }}">          
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-                data-dismiss="modal">Close
+        {{ purchase_form.submit(class="btn btn-outline-success btn-block") }}
+        </form>
         </button>
       </div>
     </div>

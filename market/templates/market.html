@@ -13,7 +13,6 @@
             <thead>
                 <tr>
                     <!-- Your Columns HERE -->
-                  <th scope="col">ID</th>
                   <th scope="col">Name</th>
                   <th scope="col">Barcode</th>
                   <th scope="col">Price</th>
@@ -25,13 +24,12 @@
                 {% for item in items %}
                 {% include 'includes/items_modal.html' %}
                   <tr>
-                      <td>{{ item.id }}</td>
                       <td>{{ item.name }}</td>
                       <td>{{ item.barcode }}</td>
                       <td>${{ item.price }}</td>
                       <td>
-                        <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
-                        <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Purchase this item</button>
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal-PurchaseConfirm-{{ item.id }}">Purchase this item</button>
                       </td>
                     </tr>
                 {% endfor %}
@@ -40,23 +38,35 @@
         </table>
       </div>
       <div class="col-4">
-          <h2>Owned Items</h2>
-          <p>Click on the sale item to put item back on the market</p>
-          <br />
+        {% include 'includes/new_item_modal.html' %}
+        <div class="row>"> 
+          <div class="col-5">
+            <h3>Owned Items</h3>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newItemModal">
+              new item
+            </button>
+          </div>
+        </div>      
           <div class="row">
+            <p>Click on the sale item to put item back on the market</p>
               {% for owned_item in owned_items %}
-              {% include 'includes/owned_item_modal.html' %}
-                <div class="col-md-6">
-                    <div style="margin-bottom: 5px" class="card text-center bg-dark">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ owned_item.name }}</h5>
-                            <button type="button" class="btn btn-outline-danger" style="margin-bottom: 5px" data-toggle="modal" data-target="#Modal-SellingConfirm-{{ owned_item.id }}">
-                                Sell this Item
+                {% include 'includes/owned_item_modal.html' %}                    
+                      <ol class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                          
+                            <div class="fw-bold">{{ owned_item.name }}</div>
+                            This item costs ${{ owned_item.price }}
+                          
+                          <span>
+                            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#Modal-SellingConfirm-{{ owned_item.id }}">
+                              Sell this Item
                             </button>
-                            <p class="card-text"><strong>This item costs ${{ owned_item.price }}</strong></p>
-                         </div>
-                     </div>
-                </div>
+                          </span>
+                        </li> 
+                      </ol>
+                                    
               {% endfor %}
           </div>
       </div>

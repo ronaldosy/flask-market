@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, DecimalField, IntegerField
+from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError, NumberRange
 from market.models import User
 
 
@@ -32,3 +32,10 @@ class PurchaseItemForm(FlaskForm):
 
 class SellItemForm(FlaskForm):
     submit = SubmitField(label='Sell Item')
+
+class NewItemForm(FlaskForm):
+    name = StringField(label='Item Name', validators=[DataRequired()])
+    price = IntegerField(label='Price', validators=[DataRequired()])
+    barcode = IntegerField(label='Barcode', validators=[NumberRange(max=999999999999), DataRequired()])
+    description = StringField(label='Description')
+    submit = SubmitField(label='Add New Item')

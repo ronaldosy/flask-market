@@ -1,7 +1,5 @@
 README.md
 .gitignore
 .git
-.git/*
-market/__pycache__/
-market/__pycache__/*
+market/__pycache__
 venv
