@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: market-configmap
+data:
+  db_host: market-db-service
+  redis_host: market-redis-service
