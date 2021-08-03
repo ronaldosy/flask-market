@@ -16,8 +16,8 @@ spec:
         image: ronaldosy/flask-market:0.1
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "1024Mi"
+            cpu: "100m"
         ports:
         - containerPort: 5000
         env:
@@ -55,5 +55,5 @@ spec:
   - protocol: TCP
     port: 5000
     targetPort: 5000
-    nodePort: 30000
+    nodePort: 32000
 
