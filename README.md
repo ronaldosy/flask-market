@@ -5,10 +5,10 @@ Play list: [link]https://www.youtube.com/watch?v=p068JokuThU&list=PLOkVupluCIjuP
 
 I use this app for learning purpose. 
 
----
+-
 
 ## Environment variables
----
+-
 +MARKET_DB_USER
     +This variable will store db user information
 
