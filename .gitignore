@@ -1,0 +1,6 @@
+__pycache__
+market/market.db
+market/__pycache__
+.idea
+venv
+.git
