@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: market-redis-depl
+spec:
+  selector:
+    matchLabels:
+      app: market-redis
+  template:
+    metadata:
+      labels:
+        app: market-redis
+    spec:
+      containers:
+      - name: market-redis
+        image: redis:6.2.5-alpine3.14
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 6379
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: market-redis-service
+spec:
+  selector:
+    app: market-redis
+  ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379

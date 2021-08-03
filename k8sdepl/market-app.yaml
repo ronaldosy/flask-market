@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: market-app-depl
+spec:
+  selector:
+    matchLabels:
+      app: market-app
+  template:
+    metadata:
+      labels:
+        app: market-app
+    spec:
+      containers:
+      - name: market-app
+        image: ronaldosy/flask-market:0.1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MARKET_DB_USER
+          valueFrom:
+            secretKeyRef:              
+              name: mysql-secret
+              key: app-db-username
+        - name: MARKET_DB_PWD
+          valueFrom:
+            secretKeyRef:              
+              name: mysql-secret
+              key: app-db-password
+        - name: MARKET_DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: market-configmap
+              key: db_host
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: market-configmap
+              key: redis_host
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: market-app-service
+spec:
+  selector:
+    app: market-app
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+    nodePort: 30000
+

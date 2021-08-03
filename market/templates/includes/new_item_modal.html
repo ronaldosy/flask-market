@@ -1,0 +1,36 @@
+<div class="modal fade text-light" id="newItemModal" tabindex="-1" aria-labelledby="expenseModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="newItemModalLabel">Add New Item</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="POST">
+                      {{ new_item_form.hidden_tag() }}
+                      <div class="mb-3">
+                      {{ new_item_form.name.label(class="form-label ") }}
+                      {{ new_item_form.name(class="form-control", placeholder="Name") }}
+                      </div>
+                      <div class="mb-3">
+                      {{ new_item_form.price.label(class="form-label") }}
+                      {{ new_item_form.price(class="form-control", placeholder="Price") }}
+                      </div>
+                      <div class="mb-3">
+                      {{ new_item_form.barcode.label(class="form-label") }}
+                      {{ new_item_form.barcode(class="form-control", placeholder="Barcode") }}
+                      </div>
+                      <div class="mb-3">
+                      {{ new_item_form.description.label(class="form-label") }}
+                      {{ new_item_form.description(class="form-control", placeholder="Description") }}
+                      </div>
+                      <br />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+           {{ new_item_form.submit(class="btn btn-primary") }}
+        </div>
+        </form>        
+      </div>
+    </div>
+  </div>
