@@ -7,7 +7,7 @@ I use this app for learning purpose.
 
 ----
 
-##Environment variables
+## Environment variables
 ----
 +MARKET_DB_USER
     +This variable will store db user information
