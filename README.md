@@ -1,5 +1,5 @@
 # flask-market 
-From Flask Full Series - Web Application Development with Python by JimShapedCoding
+From: **Flask Full Series - Web Application Development with Python by JimShapedCoding**
 
 Playlist: [Flask Full Series - Web Application Development with Python](https://www.youtube.com/watch?v=p068JokuThU&list=PLOkVupluCIjuPtTkhO6jmA76uQR994Wvi "Flask Full Series - Web Application Development with Python")
 
