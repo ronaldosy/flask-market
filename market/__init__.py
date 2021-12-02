@@ -6,18 +6,19 @@ from flask_session import Session
 import redis
 import hvac
 
-
 from os import environ
 
 vault_client = hvac.Client(url='https://vault.westconcloud-id.net:8200', token=environ.get['VAULT_TOKEN'])
 vault_data = vault_client.read(path='kv/data/flask-market')
 
-db_user = vault_data['data']['data']['db_app_user']
-db_pass = vault_data['data']['data']['db_app_pwd']
+db_user = vault_data['data']['data']['app_db_user']
+db_pass = vault_data['data']['data']['app_db_pwd']
+db_host = vault_data['data']['data']['app_db_host']
+redis_host = vault_data['data']['data']['app_redis_host']
 
 
-db_uri = f"mysql+pymysql://{environ.get('MARKET_DB_USER')}:{environ.get('MARKET_DB_PWD')}@{environ.get('MARKET_DB_HOST')}/flaskmarket"
-redis_url = f"redis://{environ.get('REDIS_HOST')}:6379"
+db_uri = f"mysql+pymysql://{db_user}:{environ.get('db_pass')}@{db_host}/flaskmarket"
+redis_url = f"redis://{redis_host}:6379"
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
