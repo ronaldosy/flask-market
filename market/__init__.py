@@ -4,8 +4,17 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_session import Session
 import redis
+import hvac
+
 
 from os import environ
+
+vault_client = hvac.Client(url='https://vault.westconcloud-id.net:8200', token=environ.get['VAULT_TOKEN'])
+vault_data = vault_client.read(path='kv/data/flask-market')
+
+db_user = vault_data['data']['data']['db_app_user']
+db_pass = vault_data['data']['data']['db_app_pwd']
+
 
 db_uri = f"mysql+pymysql://{environ.get('MARKET_DB_USER')}:{environ.get('MARKET_DB_PWD')}@{environ.get('MARKET_DB_HOST')}/flaskmarket"
 redis_url = f"redis://{environ.get('REDIS_HOST')}:6379"
