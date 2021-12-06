@@ -6,3 +6,4 @@ venv
 .git
 *.sql
 *secret*
+terraform/app/.terraform*
