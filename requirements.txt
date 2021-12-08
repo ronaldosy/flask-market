@@ -1,6 +1,8 @@
 bcrypt==3.2.0
 cachelib==0.2.0
+certifi==2021.10.8
 cffi==1.14.5
+charset-normalizer==2.0.8
 click==8.0.1
 colorama==0.4.4
 cryptography==3.4.7
@@ -13,6 +15,7 @@ Flask-Session==0.4.0
 Flask-SQLAlchemy==2.5.1
 Flask-WTF==0.15.1
 greenlet==1.1.0
+hvac==0.11.2
 idna==3.2
 itsdangerous==2.0.1
 Jinja2==3.0.1
@@ -20,7 +23,9 @@ MarkupSafe==2.0.1
 pycparser==2.20
 PyMySQL==1.0.2
 redis==3.5.3
+requests==2.26.0
 six==1.16.0
 SQLAlchemy==1.4.19
+urllib3==1.26.7
 Werkzeug==2.0.1
 WTForms==2.3.3

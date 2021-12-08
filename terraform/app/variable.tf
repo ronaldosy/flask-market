@@ -32,13 +32,13 @@ locals {
 }
 
 variable "AWS_ACCESS_KEY_ID" {
-  type  = string
+  type = string
 }
 
-variable "AWS_SECRET_ACCESS_KEY"{
-  type  = string
+variable "AWS_SECRET_ACCESS_KEY" {
+  type = string
 }
 
 variable "VAULT_TOKEN" {
-  type  = string
+  type = string
 }
