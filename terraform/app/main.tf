@@ -41,6 +41,13 @@ resource "aws_security_group" "web_server" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+
 }
 
 resource "aws_security_group" "web_db" {
@@ -58,6 +65,13 @@ resource "aws_security_group" "web_db" {
     security_groups = [
       aws_security_group.web_server.id
     ]
+  }
+  
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
   }
 }
 
@@ -77,6 +91,14 @@ resource "aws_security_group" "market-redis" {
       aws_security_group.web_server.id
     ]
   }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+  }
+  
 }
 
 

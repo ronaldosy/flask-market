@@ -9,7 +9,7 @@ import hvac
 from os import environ
 
 vault_client = hvac.Client(url='https://vault.westconcloud-id.net:8200', token=environ.get['VAULT_TOKEN'])
-vault_data = vault_client.read(path='kv/data/flask-market')
+vault_data = vault_client.read(path='kv/data/flask-market/app')
 
 db_user = vault_data['data']['data']['app_db_user']
 db_pass = vault_data['data']['data']['app_db_pwd']
@@ -17,7 +17,7 @@ db_host = vault_data['data']['data']['app_db_host']
 redis_host = vault_data['data']['data']['app_redis_host']
 
 
-db_uri = f"mysql+pymysql://{db_user}:{environ.get('db_pass')}@{db_host}/flaskmarket"
+db_uri = f"mysql+pymysql://{db_user}:{db_pass}@{db_host}/flaskmarket"
 redis_url = f"redis://{redis_host}:6379"
 
 app = Flask(__name__)
